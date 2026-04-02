@@ -7,6 +7,9 @@ from app.services.user import (
     update_user,
     delete_user,
 )
+from app.services.auth import (
+    verify_user,
+)
 
 __all__ = [
     "create_user",
@@ -16,4 +19,5 @@ __all__ = [
     "get_users",
     "update_user",
     "delete_user",
+    "verify_user",
 ]

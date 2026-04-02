@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     DB_PASS: str = "postgres"
     DB_DBNAME: str = "postgres"
 
+    JWT_SECRET: str = "a-string-secret-only-you-knows"
+
     DATABASE_URL: Optional[str] = None
 
     class Config:
