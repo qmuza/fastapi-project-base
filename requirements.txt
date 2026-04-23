@@ -9,3 +9,4 @@ pydantic[email]
 python-dotenv
 alembic
 bcrypt
+fastapi-pagination
