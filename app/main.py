@@ -9,12 +9,16 @@ from app.routers import auth, user
 from app.dependencies import get_current_user
 from app.schemas import HTTPError
 from app.utils import error_response
+from app.logger import RequestIDMiddleware, get_logger, setup_logging
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    logger.info("Starting application")
     yield
 
+setup_logging()
+logger = get_logger(__name__)
 
 app = FastAPI(
     lifespan=lifespan,
@@ -27,6 +31,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(RequestIDMiddleware)
 
 @app.exception_handler(HTTPException)
 async def app_exception_handler(request, exc: HTTPException):
